@@ -56,7 +56,9 @@ public class TemaController {
 	@PutMapping 
 	public ResponseEntity<Tema> putTema (@Valid @RequestBody Tema tema){
 		return temaRepository.findById(tema.getId())
-				.map(resposta -> ResponseEntity.ok().body(temaRepository.save(tema)))
+				.map(resposta -> { 
+					return ResponseEntity.ok().body(temaRepository.save(tema));
+				})
 				.orElse(ResponseEntity.notFound().build());
 	
 	}
