@@ -8,19 +8,20 @@ import org.springframework.security.core.userdetails.UserDetails;
 
 import br.org.generation.blogpessoal.model.Usuario;
 
-public class UserDetailslmpl implements UserDetails {
+public class UserDetailsImpl implements UserDetails {
+	
 	private static final long serialVersionUID = 1L;
 
 	private String userName;
 	private String password;
 	private List<GrantedAuthority> authorities;
 
-	public UserDetailslmpl(Usuario usuario) {
+	public UserDetailsImpl(Usuario usuario) {
 		this.userName = usuario.getUsuario();
 		this.password = usuario.getSenha();
 	}
 
-	public UserDetailslmpl() {	}
+	public UserDetailsImpl() {	}
 
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
