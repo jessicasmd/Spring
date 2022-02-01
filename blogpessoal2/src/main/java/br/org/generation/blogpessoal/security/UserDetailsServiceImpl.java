@@ -10,26 +10,29 @@ import org.springframework.stereotype.Service;
 
 import br.org.generation.blogpessoal.model.Usuario;
 import br.org.generation.blogpessoal.repository.UsuarioRepository;
-/**
-*  Classe UserDetailsServiceImpl 
-* 
-*  Implementa a interface UserDetailsService, que é responsável por recuperar os dados
-*  do usuário no Banco de Dados pelo usuário e converter em um objeto da Classe 
-*  UserDetailsImpl.
-* 
-*  Por se tratar de uma implementação de uma interface, a classe deve ter em seu nome o 
-*  sufixo Impl para indicar que se trata de uma implementação.
-*/
 
 /**
-* A annotation @Service indica que esta é uma Classe de Serviço, ou seja,
-* implementa regras de negócio da aplicação
-*/
+ *  Classe UserDetailsServiceImpl 
+ * 
+ *  Implementa a interface UserDetailsService, que é responsável por recuperar os dados
+ *  do usuário no Banco de Dados pelo usuário e converter em um objeto da Classe 
+ *  UserDetailsImpl.
+ * 
+ *  Por se tratar de uma implementação de uma interface, a classe deve ter em seu nome o 
+ *  sufixo Impl para indicar que se trata de uma implementação.
+ */
+
+/**
+ * A annotation @Service indica que esta é uma Classe de Serviço, ou seja,
+ * implementa regras de negócio da aplicação
+ */
+
 @Service
 public class UserDetailsServiceImpl implements UserDetailsService {
 
 	@Autowired
 	private UsuarioRepository userRepository;
+
 	/**
 	 * 
 	 * Sobrescreve (@Override) o método loadUserByUsername.
@@ -54,7 +57,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 		/**
 		 * Se o usuário não existir, o método lança uma Exception do tipo UsernameNotFoundException.
 		 */ 
-		  
+	  
 		usuario.orElseThrow(() -> new UsernameNotFoundException(userName + " not found."));
 
 		/**
@@ -65,7 +68,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 		 * uma função lambda. Neste exemplo, o operador faz referência ao construtor da 
 		 * Classe UserDetailsImpl. 
 		 */
-		
-		return  usuario.map(UserDetailsImpl::new).get();
+
+		return usuario.map(UserDetailsImpl::new).get();
 	}
 }
