@@ -20,6 +20,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 
 import br.org.generation.blogpessoal.model.Usuario;
+import br.org.generation.blogpessoal.repository.UsuarioRepository;
+import br.org.generation.blogpessoal.repository.UsuarioRepositoryTest;
 import br.org.generation.blogpessoal.service.UsuarioService;
 
 @SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT)
@@ -38,12 +40,13 @@ public class UsuarioControllerTest {
 	@DisplayName("Cadastrar Um Usuário")
 	public void deveCriarUmUsuario() {
 
+			//Requisição
 		HttpEntity<Usuario> requisicao = new HttpEntity<Usuario>(new Usuario(0L, 
 			"Paulo Antunes", "paulo_antunes@email.com.br", "13465278"));
-
+			// Enviar e receber resposta da requuisição
 		ResponseEntity<Usuario> resposta = testRestTemplate
 			.exchange("/usuarios/cadastrar", HttpMethod.POST, requisicao, Usuario.class);
-
+			// confirmar se a resposta foi o esperado
 		assertEquals(HttpStatus.CREATED, resposta.getStatusCode());
 		assertEquals(requisicao.getBody().getNome(), resposta.getBody().getNome());
 		assertEquals(requisicao.getBody().getUsuario(), resposta.getBody().getUsuario());
@@ -104,6 +107,22 @@ public class UsuarioControllerTest {
 			.exchange("/usuarios/all", HttpMethod.GET, null, String.class);
 
 		assertEquals(HttpStatus.OK, resposta.getStatusCode());
+		
 	}
 
+	@Test
+	@Order(5)
+	@DisplayName("Localizar usuário pelo ID")
+	public void localizarUsuarioPeloId() {
+		
+				Usuario usuario = UsuarioRepositoryTest.save(new Usuario(0L, 
+				"Ricardo Marques", "ricardo_marques@email.com.br", "ricardo123"));
+	
+		ResponseEntity<String> resposta = testRestTemplate
+			.withBasicAuth("root", "root")
+			.exchange("/usuarios/"+usuario.getId(), HttpMethod.GET, null, String.class);
+
+		assertEquals(HttpStatus.OK, resposta.getStatusCode());
+	}
+	
 }
