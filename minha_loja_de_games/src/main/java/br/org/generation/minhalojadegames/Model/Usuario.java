@@ -47,6 +47,8 @@ public class Usuario {
 		this.foto=foto;
 		this.dataNasc=dataNasc;
 	}
+	
+	public Usuario() {	}
 		
 	public Long getId() {
 		return id;

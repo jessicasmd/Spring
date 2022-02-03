@@ -1,4 +1,4 @@
-package br.org.generation.blogpessoal.controller;
+package br.org.generation.blogpessoal.controller.copy;
 
 import java.util.List;
 import java.util.Optional;
