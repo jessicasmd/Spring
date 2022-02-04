@@ -1,4 +1,4 @@
-package br.org.generation.blogpessoal.controller.copy;
+package br.org.generation.blogpessoal.controller;
 
 import java.util.List;
 
@@ -67,7 +67,7 @@ public class PostagemController {
 	}
 
 	@DeleteMapping("/{id}") // deletar
-	public ResponseEntity <?> deletePostagem(@PathVariable long id) {
+	public ResponseEntity <?> deletePostagem(@PathVariable Long id) {
 		
 		return postagemRepository.findById(id)
 				.map(resposta -> {

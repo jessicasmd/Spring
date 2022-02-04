@@ -1,4 +1,4 @@
-package br.org.generation.blogpessoal.controller.copy;
+package br.org.generation.blogpessoal.controller;
 
 import java.util.List;
 
@@ -64,7 +64,7 @@ public class TemaController {
 	}
 
 	@DeleteMapping("/{id}")
-	public ResponseEntity<?> deleteTema(@PathVariable long id) {
+	public ResponseEntity<?> deleteTema(@PathVariable Long id) {
 		
 		return temaRepository.findById(id)
 				.map(resposta -> {
