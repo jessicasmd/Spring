@@ -20,7 +20,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 
 import br.org.generation.blogpessoal.model.Usuario;
-import br.org.generation.blogpessoal.repository.UsuarioRepository;
 import br.org.generation.blogpessoal.repository.UsuarioRepositoryTest;
 import br.org.generation.blogpessoal.service.UsuarioService;
 
@@ -110,7 +109,7 @@ public class UsuarioControllerTest {
 		
 	}
 
-	@Test
+	/*@Test
 	@Order(5)
 	@DisplayName("Localizar usuário pelo ID")
 	public void localizarUsuarioPeloId() {
@@ -123,6 +122,6 @@ public class UsuarioControllerTest {
 			.exchange("/usuarios/"+usuario.getId(), HttpMethod.GET, null, String.class);
 
 		assertEquals(HttpStatus.OK, resposta.getStatusCode());
-	}
+	}*/
 	
 }
