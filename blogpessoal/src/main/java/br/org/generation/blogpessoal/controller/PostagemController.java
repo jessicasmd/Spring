@@ -1,4 +1,4 @@
-package br.org.generation.blogpessoal.controller;
+	package br.org.generation.blogpessoal.controller;
 
 import java.util.List;
 
@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import  br.org.generation.blogpessoal.model.Postagem ;
+import br.org.generation.blogpessoal.model.Postagem;
 import br.org.generation.blogpessoal.repository.PostagemRepository;
 
 @RestController
@@ -29,7 +29,7 @@ public class PostagemController {
 	private PostagemRepository postagemRepository;
 	
 	@GetMapping 
-	public ResponseEntity <List<Postagem>> getAll (){
+	public ResponseEntity <List<Postagem>> getAll(){
 		return ResponseEntity.ok(postagemRepository.findAll());//findAll = select*from tb_postagens;
 		
 	}
@@ -67,7 +67,7 @@ public class PostagemController {
 	}
 
 	@DeleteMapping("/{id}") // deletar
-	public ResponseEntity <?> deletePostagem(@PathVariable Long id) {
+	public ResponseEntity <?> deletePostagem(@PathVariable Long id){
 		
 		return postagemRepository.findById(id)
 				.map(resposta -> {

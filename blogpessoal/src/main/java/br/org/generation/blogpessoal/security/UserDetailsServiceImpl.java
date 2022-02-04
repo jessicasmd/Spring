@@ -66,6 +66,6 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 		 * Classe UserDetailsImpl. 
 		 */
 		
-		return  usuario.map(UserDetailsImpl::new).get();
+		return usuario.map(UserDetailsImpl::new).get();
 	}
 }

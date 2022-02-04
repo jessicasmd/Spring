@@ -37,7 +37,7 @@ public class TemaController {
 	}
 	
 	@GetMapping ("/{id}") 
-		public ResponseEntity<Tema> getById(@PathVariable Long id){
+		private ResponseEntity<Tema> getById(@PathVariable Long id){
 			return temaRepository.findById(id)
 					.map(resposta ->ResponseEntity.ok(resposta))
 					.orElse(ResponseEntity.notFound().build());
@@ -64,7 +64,7 @@ public class TemaController {
 	}
 
 	@DeleteMapping("/{id}")
-	public ResponseEntity<?> deleteTema(@PathVariable Long id) {
+	public ResponseEntity<?> deleteTema(@PathVariable Long id){
 		
 		return temaRepository.findById(id)
 				.map(resposta -> {
